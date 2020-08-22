@@ -1,0 +1,108 @@
+{
+	"variables": [],
+	"info": {
+		"name": "EmsRestApplication-Postman",
+		"_postman_id": "c479c1b3-1828-0d56-43a5-e7264d027341",
+		"description": "EmsRestApplication \r\n\r\nList of Api calls\r\n\r\n1) Get the list of all users\r\nhttp://localhost:8080/EmsRestApplication/api/user/\r\n\r\n[\r\n    {\r\n        \"id\": 1,\r\n        \"name\": \"Jack\",\r\n        \"age\": 30,\r\n        \"salary\": 70000\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"name\": \"Tom\",\r\n        \"age\": 40,\r\n        \"salary\": 50000\r\n    },\r\n    {\r\n        \"id\": 3,\r\n        \"name\": \"Jerome\",\r\n        \"age\": 45,\r\n        \"salary\": 30000\r\n    },\r\n    {\r\n        \"id\": 4,\r\n        \"name\": \"Silvia\",\r\n        \"age\": 50,\r\n        \"salary\": 40000\r\n    },\r\n]\r\n\r\n\r\n2) Retrieve particular user/\r\nhttp://localhost:8080/EmsRestApplication/api/user/2\r\n\r\n{\r\n    \"id\": 2,\r\n    \"name\": \"Tom\",\r\n    \"age\": 40,\r\n    \"salary\": 50000\r\n}\r\n\r\n\r\n3) Try to retrieve user which does not exist\r\nhttp://localhost:8080/EmsRestApplication/api/user/25\r\n\r\n{\r\n    \"errorMessage\": \"User with id 25 not found\"\r\n}\r\n\r\n\r\n4) Create a new User\r\nUse POST, specify the content in body, select content-type as ‘application/json’\r\n\r\nhttp://localhost:8080/EmsRestApplication/api/user/\r\n\r\n{\r\n    \"name\": \"Arvinder\",\r\n     \"age\" : 35,\r\n     \"salary\" : 50000\r\n\r\n}\r\nNew user would be created and will be accessible at the location mentioned in Location header.\r\n\r\n\r\n5. Create a User with an existing user-name\r\n\r\nUse POST, specify the content in body with name of an existing user,Send, should get a 409/conflict. \r\nhttp://localhost:8080/EmsRestApplication/api/user/\r\n\r\n{\r\n    \"errorMessage\": \"Unable to create. A User with name Arvinder already exist.\"\r\n}\r\n\r\n7. Update an existing user\r\nUse PUT, specify the content in body and type as ‘application/json’.\r\n\r\nhttp://localhost:8080/EmsRestApplication/api/user/5\r\n\r\n{\r\n    \"id\": 5,\r\n    \"name\": \"Arvinder\",\r\n    \"age\": 35,\r\n    \"salary\": 55000\r\n}\r\n\r\n8. Delete an existing user\r\nUse DELETE, specify the id in url, send. User should be deleted from server.\r\nhttp://localhost:8080/EmsRestApplication/api/user/2\r\n\r\n8. Delete all users\r\nUse DELETE, do not specify any id, send. All users should be deleted from server.\r\nhttp://localhost:8080/EmsRestApplication/api/user/\r\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Retrieve all users",
+			"request": {
+				"url": "http://localhost:8080/EmsRestApplication/api/user/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get the list of all users"
+			},
+			"response": []
+		},
+		{
+			"name": "2) Retrieve particular user",
+			"request": {
+				"url": "http://localhost:8080/EmsRestApplication/api/user/2",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Use GET, specify the id of the user you are looking for and send."
+			},
+			"response": []
+		},
+		{
+			"name": "3. Retrieve an unknown user",
+			"request": {
+				"url": "http://localhost:8080/EmsRestApplication/api/user/25",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Try to retrieve user which does not exist"
+			},
+			"response": []
+		},
+		{
+			"name": "4. Create a User",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Use POST, specify the content in body, select content-type as ‘application/json’"
+			},
+			"response": []
+		},
+		{
+			"name": "5. Create a User with an existing user-name",
+			"request": {
+				"url": "http://localhost:8080/EmsRestApplication/api/user/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Arvinder\",\r\n     \"age\" : 35,\r\n     \"salary\" : 50000\r\n\r\n}"
+				},
+				"description": "Use POST, specify the content in body with name of an existing user,Send, should get a 409/conflict. "
+			},
+			"response": []
+		},
+		{
+			"name": "6. Update an existing user",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Use PUT, specify the content in body and type as ‘application/json’."
+			},
+			"response": []
+		},
+		{
+			"name": "7. Delete an existing user",
+			"request": {
+				"url": "http://localhost:8080/EmsRestApplication/api/user/2",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Use DELETE, specify the id in url, send. User should be deleted from server."
+			},
+			"response": []
+		},
+		{
+			"name": "8. Delete all users",
+			"request": {
+				"url": "http://localhost:8080/EmsRestApplication/api/user/",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Use DELETE, do not specify any id, send. All users should be deleted from server."
+			},
+			"response": []
+		}
+	]
+}

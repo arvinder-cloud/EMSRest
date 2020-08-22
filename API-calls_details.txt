@@ -1,0 +1,102 @@
+EmsRestApplication 
+
+List of Api calls
+
+1) Get the list of all users
+http://localhost:8080/EmsRestApplication/api/user/
+
+[
+    {
+        "id": 1,
+        "name": "Jack",
+        "age": 30,
+        "salary": 70000
+    },
+    {
+        "id": 2,
+        "name": "Tom",
+        "age": 40,
+        "salary": 50000
+    },
+    {
+        "id": 3,
+        "name": "Jerome",
+        "age": 45,
+        "salary": 30000
+    },
+    {
+        "id": 4,
+        "name": "Silvia",
+        "age": 50,
+        "salary": 40000
+    },
+]
+
+
+2) Retrieve particular user/
+http://localhost:8080/EmsRestApplication/api/user/2
+
+{
+    "id": 2,
+    "name": "Tom",
+    "age": 40,
+    "salary": 50000
+}
+
+
+3) Try to retrieve user which does not exist
+http://localhost:8080/EmsRestApplication/api/user/25
+
+{
+    "errorMessage": "User with id 25 not found"
+}
+
+
+4) Create a new User
+Use POST, specify the content in body, select content-type as ‘application/json’
+
+http://localhost:8080/EmsRestApplication/api/user/
+
+{
+    "name": "Arvinder",
+     "age" : 35,
+     "salary" : 50000
+
+}
+New user would be created and will be accessible at the location mentioned in Location header.
+
+
+5. Create a User with an existing user-name
+
+Use POST, specify the content in body with name of an existing user,Send, should get a 409/conflict. 
+http://localhost:8080/EmsRestApplication/api/user/
+{
+    "name": "Arvinder",
+     "age" : 35,
+     "salary" : 50000
+
+}
+
+{
+    "errorMessage": "Unable to create. A User with name Arvinder already exist."
+}
+
+7. Update an existing user
+Use PUT, specify the content in body and type as ‘application/json’.
+
+http://localhost:8080/EmsRestApplication/api/user/5
+
+{
+    "id": 5,
+    "name": "Arvinder",
+    "age": 35,
+    "salary": 55000
+}
+
+8. Delete an existing user
+Use DELETE, specify the id in url, send. User should be deleted from server.
+http://localhost:8080/EmsRestApplication/api/user/2
+
+8. Delete all users
+Use DELETE, do not specify any id, send. All users should be deleted from server.
+http://localhost:8080/EmsRestApplication/api/user/
